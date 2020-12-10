@@ -39,7 +39,24 @@ with open(csvpath) as csvfile:
 
         # The net total amount of "Profit/Losses" over the entire period
         sum+=int(row[1])
+
+        # Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
+        # length = len(numbers)
+        # total = 0.0
+        # for number in numbers:
+        #     total += number
+        #     answer = total / length
+        #     return total / length
         
+        def average(list_one):
+            length_list=len(list_one)
+        
+            for m in range(1, length_list):
+                difference=(int(list_one[m])-int(list_one[m-1]))
+        
+        print(average(list_one))
+            
+
     print(counter)
     print(list_one)
     print(sum)
@@ -58,12 +75,13 @@ with open(csvpath) as csvfile:
             max_increase=difference
 
     print(max_increase)
-            
+
+    # The greatest decrease in losses (date and amount) over the entire period       
     for m in range(1, length_list):
         difference=(int(list_one[m])-int(list_one[m-1]))
         list_two.append(difference)
         if difference < max_decrease: 
-            max_increase=difference
+            max_decrease=difference
 
     print(max_decrease)
 
