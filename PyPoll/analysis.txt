@@ -1,3 +1,8 @@
 Election Results
 -------------------
-Total Votes":3521001
+Total Votes:1
+-------------------
+Khan:221823000.0
+Correy:704200.0
+Li:49294000.0
+OTooley:10563000.0
