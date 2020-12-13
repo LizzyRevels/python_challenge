@@ -1,20 +1,15 @@
 import os
 import csv
 
-# Specify the file to write to
-output_path = os.path.join("Resources", "output", "output.txt")
-
 # Path to collect data from the Resources folder
 csvpath = os.path.join('Resources','budget_data.csv')
 
 # Save the output file path
-output_file = os.path.join("output.txt")
+output_file = os.path.join("analysis.txt")
 
-# open the output file
-# with open(output_file, "w", newline='') as datafile:
-#     writer = csv.writer(datafile)
+# Path to output
+output_file =os.path.join("analysis.txt")
 
-#     writer.writerow(["Total Months"])
 
 #Read data
 with open(csvpath) as csvfile:
@@ -28,48 +23,38 @@ with open(csvpath) as csvfile:
 # Create a Python script that analyzes the records:
     counter=0
     sum=0
-    list_one=[]
+    profit_loss=[]
+    # avg_change=[]
     
  # Read each row of data after the header
     for row in csvreader:
         
         # The total number of months included in the dataset
         counter=counter+1
-        list_one.append(row[1])
+        profit_loss.append(row[1])
 
         # The net total amount of "Profit/Losses" over the entire period
         sum+=int(row[1])
 
         # Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
-        # length = len(numbers)
-        # total = 0.0
-        # for number in numbers:
-        #     total += number
-        #     answer = total / length
-        #     return total / length
-        
-        def average(list_one):
-            length_list=len(list_one)
-        
-            for m in range(1, length_list):
-                difference=(int(list_one[m])-int(list_one[m-1]))
-        
-        print(average(list_one))
+        # for r in range(len(profit_loss)-1):
+        #     avg_change.append(profit_loss)[r+1]-profit_loss[r]
             
 
     print(counter)
-    print(list_one)
+    print(profit_loss)
     print(sum)
-    # print(sum/counter)
+    # print(avg_change)
+   
 
     # The greatest increase in profits (date and amount) over the entire period
-    length_list=len(list_one)
+    length_list=len(profit_loss)
     list_two=[]
     max_increase=0
     max_decrease=0
 
     for m in range(1, length_list):
-        difference=(int(list_one[m])-int(list_one[m-1]))
+        difference=(int(profit_loss[m])-int(profit_loss[m-1]))
         list_two.append(difference)
         if difference > max_increase: 
             max_increase=difference
@@ -78,7 +63,7 @@ with open(csvpath) as csvfile:
 
     # The greatest decrease in losses (date and amount) over the entire period       
     for m in range(1, length_list):
-        difference=(int(list_one[m])-int(list_one[m-1]))
+        difference=(int(profit_loss[m])-int(profit_loss[m-1]))
         list_two.append(difference)
         if difference < max_decrease: 
             max_decrease=difference
@@ -86,3 +71,12 @@ with open(csvpath) as csvfile:
     print(max_decrease)
 
 
+# #export to text file
+with open(output_file, "w", newline='') as datafile:
+    datafile.write("Financial Analysis\n")
+    datafile.write("-------------------\n")
+    datafile.write(f'Greatest Decrease in Profits:{max_decrease}\n')
+    datafile.write(f'Greatest Increase in Profits:{max_increase}\n')
+    datafile.write(f'Total Months:{counter}\n')
+    datafile.write(f'profit_loss:{profit_loss}\n')
+    datafile.write(f'Total:{sum}\n')
