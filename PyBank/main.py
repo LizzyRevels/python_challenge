@@ -22,9 +22,9 @@ with open(csvpath) as csvfile:
 
 # Create a Python script that analyzes the records:
     counter=0
-    sum=0
+    sum_=0
     profit_loss=[]
-    # avg_change=[]
+    avg_change=[]
     
  # Read each row of data after the header
     for row in csvreader:
@@ -34,17 +34,20 @@ with open(csvpath) as csvfile:
         profit_loss.append(row[1])
 
         # The net total amount of "Profit/Losses" over the entire period
-        sum+=int(row[1])
+        sum_+=int(row[1])
 
-        # Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
-        # for r in range(len(profit_loss)-1):
-        #     avg_change.append(profit_loss)[r+1]-profit_loss[r]
+    # Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
+    for r in range(len(profit_loss)-1): 
+        avg_change.append(int(profit_loss[r+1])-int(profit_loss[r]))
             
 
     print(counter)
     print(profit_loss)
-    print(sum)
-    # print(avg_change)
+    print(sum_)
+    change = sum(avg_change)
+    no_of_changes= len(avg_change)
+    average_of_changes = round(change/no_of_changes,2)
+    print(average_of_changes)
    
 
     # The greatest increase in profits (date and amount) over the entire period
@@ -75,8 +78,8 @@ with open(csvpath) as csvfile:
 with open(output_file, "w", newline='') as datafile:
     datafile.write("Financial Analysis\n")
     datafile.write("-------------------\n")
-    datafile.write(f'Greatest Decrease in Profits:{max_decrease}\n')
-    datafile.write(f'Greatest Increase in Profits:{max_increase}\n')
+    datafile.write(f'Greatest Decrease in Profits:${max_decrease}\n')
+    datafile.write(f'Greatest Increase in Profits:${max_increase}\n')
     datafile.write(f'Total Months:{counter}\n')
-    datafile.write(f'profit_loss:{profit_loss}\n')
-    datafile.write(f'Total:{sum}\n')
+    datafile.write(f'Total:${sum_}\n')
+    datafile.write(f'Total:${average_of_changes}\n')
