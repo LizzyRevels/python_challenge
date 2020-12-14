@@ -8,7 +8,7 @@ csvpath = os.path.join('Resources','budget_data.csv')
 # output_file = os.path.join("analysis.txt")
 
 # Path to output
-output_file = os.path.join('Resources', 'analysis.txt')
+output_file = os.path.join('analysis', 'analysis.txt')
 
 
 #Read data

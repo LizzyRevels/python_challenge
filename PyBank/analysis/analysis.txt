@@ -1,7 +1,7 @@
 Financial Analysis
 -------------------
-Greatest Decrease in Profits:$-2196167
-Greatest Increase in Profits:$1926159
-Total Months:86
-Total:$38382578
-Total:$-2315.12
+Total Months: 86
+Total: $38382578
+Total: $-2315.12
+Greatest Decrease in Profits: $-2196167
+Greatest Increase in Profits: $1926159
