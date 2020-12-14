@@ -4,11 +4,11 @@ import csv
 # Path to collect data from the Resources folder
 csvpath = os.path.join('Resources','budget_data.csv')
 
-# Save the output file path
-output_file = os.path.join("analysis.txt")
+# # Save the output file path
+# output_file = os.path.join("analysis.txt")
 
 # Path to output
-output_file =os.path.join("analysis.txt")
+output_file = os.path.join('Resources', 'analysis.txt')
 
 
 #Read data
@@ -78,8 +78,8 @@ with open(csvpath) as csvfile:
 with open(output_file, "w", newline='') as datafile:
     datafile.write("Financial Analysis\n")
     datafile.write("-------------------\n")
-    datafile.write(f'Total Months:{counter}\n')
-    datafile.write(f'Total:${sum_}\n')
-    datafile.write(f'Total:${average_of_changes}\n')
-    datafile.write(f'Greatest Decrease in Profits:${max_decrease}\n')
-    datafile.write(f'Greatest Increase in Profits:${max_increase}\n')
+    datafile.write(f'Total Months: {counter}\n')
+    datafile.write(f'Total: ${sum_}\n')
+    datafile.write(f'Total: ${average_of_changes}\n')
+    datafile.write(f'Greatest Decrease in Profits: ${max_decrease}\n')
+    datafile.write(f'Greatest Increase in Profits: ${max_increase}\n')
