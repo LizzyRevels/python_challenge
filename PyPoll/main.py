@@ -5,7 +5,7 @@ import csv
 csvpath = os.path.join('Resources','election_data.csv')
 
 # Save the output file path
-output_file = os.path.join("analysis.txt")
+output_file = os.path.join('analysis', 'analysis.txt')
 
 # Read data
 with open(csvpath) as csvfile:
@@ -28,10 +28,14 @@ with open(csvpath) as csvfile:
 
     total_votes = len(vote_counts)   
     print(counter)
+
+# A complete list of candidates who received votes
     candidates = set(vote_counts)
     print(candidates)
 
-# A complete list of candidates who received votes
+# The percentage of votes each candidate won
+# The total number of votes each candidate won
+
     Khan_votes = vote_counts.count("Khan")
     Khan_percent = (Khan_votes/total_votes) * 100
     print(Khan_percent) 
@@ -52,11 +56,13 @@ with open(csvpath) as csvfile:
     print(OTooley_percent) 
     print(OTooley_votes)  
     
-    # The winner of the election based on popular vote.
+# The winner of the election based on popular vote
+
     max_votes=max({Khan_votes} , {Correy_votes} , {Li_percent} , {OTooley_votes})
     print(max_votes)
 
-# export to text file
+# Export to text file
+
 with open(output_file, "w", newline='') as textfile:
     textfile.write("Election Results\n")
     textfile.write("-------------------\n")
@@ -68,5 +74,5 @@ with open(output_file, "w", newline='') as textfile:
     textfile.write(f'O\'Tooley: {round(OTooley_percent)}% {OTooley_votes}\n')
     textfile.write("-------------------\n")
     textfile.write(f'Winner: Khan')
-    # textfile.write(f'Winner':{x})
+    
    
